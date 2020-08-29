@@ -3,6 +3,7 @@ import {HashRouter as Router, Route} from 'react-router-dom';
 import { connect } from 'react-redux'
 //components
 import MovieDisplay from '../MovieDisplay/MovieDisplay'
+import MovieDescription from '../MovieDescription/MovieDescription'
 
 import './App.css';
 
@@ -17,8 +18,9 @@ class App extends Component {
       <div className="App">
         <h1>Movies!</h1>
         <Router>
-          {/* ADD PAGES! */}
-          <MovieDisplay />
+          {/* ADD PAGES! */}         
+          <Route exact path='/moviedescription' component={MovieDescription}/>
+          <Route exact path='/' component={MovieDisplay}/>
         </Router>
         <p>Empty Page</p>
       </div>
