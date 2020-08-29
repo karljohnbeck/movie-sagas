@@ -14,7 +14,15 @@ class MovieDescription extends Component {
             <div className='container'>
 
                 <div>
-                    <h3>{movie.title}</h3>
+                    <h2>{movie.title}</h2>
+                    <h4>Genres</h4>
+                    <ul>
+                        {this.props.reduxState.genres.map((genre, i) => {
+                            return(
+                            <li>{genre.name}</li>
+                            )
+                        })}
+                    </ul>
                     <img src={movie.poster} alt={movie.title} />
                     <p>{movie.description}</p>
                     <button onClick={this.goToHome}>Back</button>

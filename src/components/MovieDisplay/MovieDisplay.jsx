@@ -5,8 +5,8 @@ import { actionChannel } from 'redux-saga/effects'
 class MovieDisplay extends Component {
 
     goToDetails = (movie) => {
-        this.props.dispatch({type: 'CLICK_MOVIE', payload: movie})
-        this.props.history.push('/moviedescription')
+        this.props.dispatch({type: 'FETCH_GENRES', payload: movie})
+        this.props.history.push('/details')
     }
 
     render () {

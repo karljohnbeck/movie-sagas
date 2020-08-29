@@ -15,17 +15,33 @@ import { takeEvery, put } from 'redux-saga/effects';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchMoviesData)
+    yield takeEvery('FETCH_GENRES', fetchGenres)
 
 }
 
 // generator reducers 
 function* fetchMoviesData() {
     try {
+        
         let response = yield axios.get('/api/movie');
         yield console.log(response.data);
         yield put({type: 'SET_MOVIES', payload: response.data})
     } catch (error) {
         console.log(error, 'in get movies')
+    }
+}
+
+function* fetchGenres(action) {
+    console.log(action.payload.id)
+    try {
+        yield console.log(action.payload.id)
+        let response = yield axios.get(`/api/genre/${action.payload.id}`);
+        yield console.log(response.data);
+        yield put({type: 'CLICK_MOVIE', payload: action.payload})
+        yield put({type: 'SET_GENRES', payload: response.data})
+
+    } catch (error) {
+        console.log(error, 'in get Genres')
     }
 }
 
@@ -51,7 +67,7 @@ const movies = (state = [], action) => {
     }
 }
 
-const clickedMovie = (state = {}, action) => {
+const clickedMovie = (state = [], action) => {
     switch (action.type) {
         case 'CLICK_MOVIE':
             return action.payload;

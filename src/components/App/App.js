@@ -19,7 +19,7 @@ class App extends Component {
         <h1>Movies!</h1>
         <Router>
           {/* ADD PAGES! */}         
-          <Route exact path='/moviedescription' component={MovieDescription}/>
+          <Route exact path='/details' component={MovieDescription}/>
           <Route exact path='/' component={MovieDisplay}/>
         </Router>
         <p>Empty Page</p>
