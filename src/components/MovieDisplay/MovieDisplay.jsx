@@ -11,6 +11,9 @@ class MovieDisplay extends Component {
 
     render () {
         return (
+            <>
+            <h4>Click a poster for more details.</h4>
+
             <div className='container'>
             {this.props.reduxState.movies.map((movie, i) => {
                 return(
@@ -20,6 +23,7 @@ class MovieDisplay extends Component {
                 )
             })}
             </ div>
+            </>
                 )
     }
 }

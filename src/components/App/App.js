@@ -16,18 +16,21 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div className="App">        
+      <Router>
+
+        <header>
         <h1>Movies!</h1>
-        <Router>
           <nav>
             <button><Link to='/form'>Add a movie</Link></button>
           </nav>
+
+          </header>
           <Route exact path='/details' component={MovieDescription}/>
           <Route exact path='/form' component={MovieForm}/>
           <Route exact path='/' component={MovieDisplay}/>
 
         </Router>
-        <p>Empty Page</p>
       </div>
     );
   }

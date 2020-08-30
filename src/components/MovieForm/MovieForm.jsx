@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { actionChannel } from 'redux-saga/effects'
+import Button from '@material-ui/core/Button';
+
 
 class MovieForm extends Component {
 
@@ -68,10 +70,11 @@ class MovieForm extends Component {
                     <option value="12">Disaster</option>
                     <option value="13">Superhero</option>
                 </select>
-                <input type='submit' value='Submit' />
+                <Button onClick={this.goToHome}>Save</Button>
 
             </form>
-            <button onClick={this.goToHome}>Back</button>
+
+            <Button onClick={this.handleSubmit}>Cancel</Button>
 
             </>
 
