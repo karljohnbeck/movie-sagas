@@ -6,6 +6,8 @@ import TextField from '@material-ui/core/TextField'
 
 // select feature 
 import Grid from '@material-ui/core/Grid';
+import swal from '@sweetalert/with-react';
+
 
 
 class MovieForm extends Component {
@@ -54,11 +56,13 @@ class MovieForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        if (this.state.title == '' || 
-        this.state.poster == '' ||
-        this.state.description == '' ||
-        this.state.genre_id == 0) {
-            
+        console.log(this.state)
+        if (this.state.title === '' || 
+        this.state.poster === '' ||
+        this.state.description === '' ||
+        this.state.genre_id === 0) {
+            swal('Incomplete step', 'Fill out all fields.');
+
         } else {
         this.props.dispatch({ type: 'ADD_MOVIE', payload: this.state })
         this.props.history.push('/')
@@ -81,7 +85,7 @@ class MovieForm extends Component {
                             m={0.5}
                         >
                             <TextField onChange={this.titleChange} id="filled-basic" label="title" variant="filled" />
-                            <TextField id="filled-basic" label="Poster Url" variant="filled" />
+                            <TextField onChange={this.posterChange} id="filled-basic" label="Poster Url" variant="filled" />
                             <textarea placeholder="Description" onChange={this.descriptionChange} />
                         </Grid>
 <div className="selector">
