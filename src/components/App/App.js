@@ -21,7 +21,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <header>
-            <h1>Movies!</h1>
+            <h1>Movies Collection</h1>
             <nav>
               <Button variant="contained"><Link to='/'>Home</Link></Button>
               <Button variant="contained"><Link to='/form'>Add a movie</Link></Button>
