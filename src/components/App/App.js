@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 import MovieDisplay from '../MovieDisplay/MovieDisplay'
 import MovieDescription from '../MovieDescription/MovieDescription'
 import MovieForm from '../MovieForm/MovieForm'
+// material-ui
+import Button from '@material-ui/core/Button';
+
 
 import './App.css';
 
@@ -22,7 +25,7 @@ class App extends Component {
         <header>
         <h1>Movies!</h1>
           <nav>
-            <button><Link to='/form'>Add a movie</Link></button>
+            <Button variant="contained"><Link to='/form'>Add a movie</Link></Button>
           </nav>
 
           </header>

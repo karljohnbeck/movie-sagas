@@ -1,9 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { actionChannel } from 'redux-saga/effects'
 import Button from '@material-ui/core/Button';
-
-
+import TextField from '@material-ui/core/TextField'
 class MovieForm extends Component {
 
     state = {
@@ -18,24 +16,31 @@ class MovieForm extends Component {
     }
 
     titleChange = (event) => {
+        console.log(event.target.value)
         this.setState({
             title: event.target.value
         })
     }
 
     posterChange= (event) => {
+        console.log(event.target.value)
+
         this.setState({
             poster:event.target.value
         })
     }
     
     descriptionChange= (event) => {
+        console.log(event.target.value)
+
         this.setState({
             description:event.target.value
         })
     }
 
     genreChange= (event) => {
+        console.log(event.target.value)
+
         this.setState({
             genre_id: event.target.value
         })
@@ -44,6 +49,8 @@ class MovieForm extends Component {
     handleSubmit = (event) =>{
         event.preventDefault();
         this.props.dispatch({type: 'ADD_MOVIE', payload: this.state})
+        this.props.history.push('/')
+
     }
 
     render () {
@@ -51,10 +58,10 @@ class MovieForm extends Component {
             <>
             <form onSubmit={this.handleSubmit}>
                 <h2>Add a new Movie!</h2>
-                <input placeholder="title" onChange={this.titleChange}/>
-                <input placeholder="poster url" onChange={this.posterChange}/>
+                <TextField  onChange={this.titleChange} id="filled-basic" label="title" variant="filled" />
+                <TextField  id="filled-basic" label="Poster Url" variant="filled" />
                 <textarea placeholder="description" onChange={this.descriptionChange}/>
-                <label>Choose a genre:</label>
+                <label>Genre:</label>
                 <select name="category" id="category" onChange={this.genreChange}>
                     <option value="1">Adventure</option>
                     <option value="2">Animated</option>
@@ -70,11 +77,11 @@ class MovieForm extends Component {
                     <option value="12">Disaster</option>
                     <option value="13">Superhero</option>
                 </select>
-                <Button onClick={this.goToHome}>Save</Button>
+                <Button variant="contained" onClick={this.handleSubmit}>Save</Button>
 
             </form>
 
-            <Button onClick={this.handleSubmit}>Cancel</Button>
+            <Button variant="contained" onClick={this.goToHome}>Cancel</Button>
 
             </>
 
