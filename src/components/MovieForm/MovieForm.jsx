@@ -58,6 +58,8 @@ class MovieForm extends Component {
         // else, send data to redux to handle the data storage
         else {
             this.props.dispatch({ type: 'ADD_MOVIE', payload: this.state })
+            swal("Movie Submitted!", "Your movie has been saved!", "success");
+
             this.props.history.push('/')
         }
     }
