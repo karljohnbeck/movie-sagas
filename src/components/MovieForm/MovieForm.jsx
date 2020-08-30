@@ -1,7 +1,13 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField'
+// select feature 
+
+// select feature 
+import Grid from '@material-ui/core/Grid';
+
+
 class MovieForm extends Component {
 
     state = {
@@ -22,23 +28,23 @@ class MovieForm extends Component {
         })
     }
 
-    posterChange= (event) => {
+    posterChange = (event) => {
         console.log(event.target.value)
 
         this.setState({
-            poster:event.target.value
+            poster: event.target.value
         })
     }
-    
-    descriptionChange= (event) => {
+
+    descriptionChange = (event) => {
         console.log(event.target.value)
 
         this.setState({
-            description:event.target.value
+            description: event.target.value
         })
     }
 
-    genreChange= (event) => {
+    genreChange = (event) => {
         console.log(event.target.value)
 
         this.setState({
@@ -46,42 +52,68 @@ class MovieForm extends Component {
         })
     }
 
-    handleSubmit = (event) =>{
+    handleSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({type: 'ADD_MOVIE', payload: this.state})
+        if (this.state.title == '' || 
+        this.state.poster == '' ||
+        this.state.description == '' ||
+        this.state.genre_id == 0) {
+            
+        } else {
+        this.props.dispatch({ type: 'ADD_MOVIE', payload: this.state })
         this.props.history.push('/')
+        }
 
     }
 
-    render () {
+    render() {
         return (
             <>
-            <form onSubmit={this.handleSubmit}>
-                <h2>Add a new Movie!</h2>
-                <TextField  onChange={this.titleChange} id="filled-basic" label="title" variant="filled" />
-                <TextField  id="filled-basic" label="Poster Url" variant="filled" />
-                <textarea placeholder="description" onChange={this.descriptionChange}/>
-                <label>Genre:</label>
-                <select name="category" id="category" onChange={this.genreChange}>
-                    <option value="1">Adventure</option>
-                    <option value="2">Animated</option>
-                    <option value="3">Biography</option>
-                    <option value="4">Comedy</option>
-                    <option value="5">Disaster</option>
-                    <option value="6">Drama</option>
-                    <option value="7">Epic</option>
-                    <option value="8">Fantasy</option>
-                    <option value="9">Musical</option>
-                    <option value="10">Romantic</option>
-                    <option value="11">Science Fiction</option>
-                    <option value="12">Disaster</option>
-                    <option value="13">Superhero</option>
-                </select>
-                <Button variant="contained" onClick={this.handleSubmit}>Save</Button>
 
-            </form>
+                <form onSubmit={this.handleSubmit}>
+                    <h2>Add a new Movie!</h2>
+                    
+                        <Grid
+                            container
+                            direction="row"
+                            justify="space-evenly"
+                            alignItems="center"
+                            m={0.5}
+                        >
+                            <TextField onChange={this.titleChange} id="filled-basic" label="title" variant="filled" />
+                            <TextField id="filled-basic" label="Poster Url" variant="filled" />
+                            <textarea placeholder="Description" onChange={this.descriptionChange} />
+                        </Grid>
+<div className="selector">
+                        <label>Genre:</label>
+                        <select name="category" id="category" onChange={this.genreChange}>
+                            <option value="1">Adventure</option>
+                            <option value="2">Animated</option>
+                            <option value="3">Biography</option>
+                            <option value="4">Comedy</option>
+                            <option value="5">Disaster</option>
+                            <option value="6">Drama</option>
+                            <option value="7">Epic</option>
+                            <option value="8">Fantasy</option>
+                            <option value="9">Musical</option>
+                            <option value="10">Romantic</option>
+                            <option value="11">Science Fiction</option>
+                            <option value="12">Disaster</option>
+                            <option value="13">Superhero</option>
+                        </select>
+                        </div>
+                        <Grid
+                            item
+                            space={4}
+                            direction="row"
+                            justify="space-evenly"
+                            alignItems="center">
+                            <Button variant="contained" onClick={this.handleSubmit}>Save</Button>
+                        </Grid>
 
-            <Button variant="contained" onClick={this.goToHome}>Cancel</Button>
+                </form>
+
+                <Button variant="contained" onClick={this.goToHome}>Cancel</Button>
 
             </>
 
@@ -91,6 +123,6 @@ class MovieForm extends Component {
 
 const mapStateToProps = reduxState => ({
     reduxState,
-  });
-  
-  export default connect(mapStateToProps)(MovieForm)
+});
+
+export default connect(mapStateToProps)(MovieForm)

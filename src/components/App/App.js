@@ -25,6 +25,8 @@ class App extends Component {
         <header>
         <h1>Movies!</h1>
           <nav>
+          <Button variant="contained"><Link to='/'>Home</Link></Button>
+
             <Button variant="contained"><Link to='/form'>Add a movie</Link></Button>
           </nav>
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
+import './movieDesc.css'
 
 
 class MovieDescription extends Component {
@@ -26,8 +27,10 @@ class MovieDescription extends Component {
                         })}
                     
                     <img src={movie.poster} alt={movie.title} />
-                    <p>{movie.description}</p>
-                    <Button variant="contained" onClick={this.goToHome}>Back</Button>
+                    <div className="desc_text">
+                    <p >{movie.description}</p>
+                    </div>
+                    <Button className="btn" variant="contained" onClick={this.goToHome}>Back</Button>
                 </div>
 
 
